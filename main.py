@@ -260,7 +260,7 @@ def execute():
 
 
 def prepare_user_tokens() -> dict:
-    data_path = r"encrypted_tokens.data"
+    data_path = os.environ.get("TOKEN_FILE", "encrypted_tokens.data")
     if os.path.exists(data_path):
         with open(data_path, 'rb') as f:
             data = f.read()
@@ -276,7 +276,7 @@ def prepare_user_tokens() -> dict:
 
 
 def persist_user_tokens():
-    data_path = r"encrypted_tokens.data"
+    data_path = os.environ.get("TOKEN_FILE", "encrypted_tokens.data")
     origin_str = json.dumps(user_tokens, ensure_ascii=False)
     cipher_data = encrypt_data(origin_str.encode("utf-8"), aes_key, None)
     with open(data_path, 'wb') as f:
