@@ -111,7 +111,7 @@
 
 - 在仓库 `Settings → Secrets and variables → Actions` 新建 `CONFIG_2` Secret，格式与 `CONFIG` 相同，可设置另一组账号、密码和步数范围。不要将密码写入 workflow 文件。
 - Actions 中选择 **刷步数-第二组**（`.github/workflows/run2.yml`），点击 **Run workflow** 可手动运行。未设置 `CONFIG_2` 时会提示缺少配置，不会回退使用第一组账号。
-- 第二组当前每天 UTC 08:03（北京时间 16:03）定时运行，可直接修改 `run2.yml` 的 `cron`。原有 `Random Cron` 仍只调整第一组，第二组使用自己的固定时间。
+- 第二组当前每天 UTC 14:00（北京时间 22:00）定时运行，可直接修改 `run2.yml` 的 `cron`。原有 `Random Cron` 仍只调整第一组，第二组使用自己的固定时间。
 - 两组共用 `PAT`、`AES_KEY`，但分别保存到 `encrypted_tokens.data` 和 `encrypted_tokens_2.data`。同步上游前应备份两份缓存。
 - 两组执行串行化；登录缓存及 Random Cron 的自动提交均在推送前 rebase，以处理并发更新。
 
