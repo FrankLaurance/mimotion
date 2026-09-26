@@ -2,7 +2,7 @@ name: 刷步数
 
 on:
   schedule:
-    - cron: '42 8 * * *'
+    - cron: '50 8 * * *'
   workflow_dispatch:
 
 # 两组任务共用写入队列，避免同时更新登录缓存。
